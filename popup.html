@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ToS Risk Analizörü</title>
+    <style>
+      body {
+        width: 380px;
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        padding: 14px;
+        margin: 0;
+        background: #f9fafb;
+        color: #111827;
+      }
+      .disclaimer {
+        background: #fef3c7;
+        border-left: 4px solid #f59e0b;
+        color: #92400e;
+        padding: 8px 12px;
+        font-size: 11px;
+        font-weight: 600;
+        border-radius: 4px;
+        margin-bottom: 12px;
+      }
+      .input-group {
+        margin-bottom: 12px;
+      }
+      input[type="password"] {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        box-sizing: border-box;
+        font-size: 12px;
+      }
+      button {
+        width: 100%;
+        padding: 10px;
+        background: #2563eb;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      button:hover {
+        background: #1d4ed8;
+      }
+      .score-card {
+        background: white;
+        border: 1px solid #e5e7eb;
+        padding: 12px;
+        border-radius: 8px;
+        text-align: center;
+        margin-top: 12px;
+      }
+      .score-num {
+        font-size: 32px;
+        font-weight: 800;
+        color: #dc2626;
+      }
+      .clause-card {
+        background: white;
+        border: 1px solid #e5e7eb;
+        padding: 10px;
+        border-radius: 6px;
+        margin-top: 8px;
+        border-left: 4px solid #ef4444;
+      }
+      .clause-title {
+        font-weight: 700;
+        font-size: 13px;
+        color: #991b1b;
+      }
+      .clause-desc {
+        font-size: 12px;
+        margin: 4px 0;
+        color: #374151;
+      }
+      .quote {
+        font-style: italic;
+        font-size: 11px;
+        color: #4b5563;
+        background: #f3f4f6;
+        padding: 6px;
+        border-radius: 4px;
+        margin-top: 4px;
+        word-break: break-word;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="disclaimer">
+      ⚠️ YASAL UYARI: Bu uygulama yapay zeka tabanlı bir analiz aracıdır ve
+      hukuki tavsiye vermez.
+    </div>
+
+    <div class="input-group">
+      <input
+        type="password"
+        id="apiKeyInput"
+        placeholder="Google Gemini API Key girin (AIzaSy...)"
+      />
+    </div>
+
+    <button id="analyzeBtn">Sayfayı Analiz Et</button>
+
+    <div
+      id="loading"
+      style="
+        display: none;
+        text-align: center;
+        margin-top: 12px;
+        font-size: 12px;
+        color: #4b5563;
+      "
+    >
+      Metin taranıyor ve riskler analiz ediliyor...
+    </div>
+
+    <div id="results" style="display: none">
+      <div class="score-card">
+        <div style="font-size: 12px; color: #6b7280; font-weight: 600">
+          GENEL RİSK SKORU
+        </div>
+        <div class="score-num" id="riskScore">0</div>
+        <p
+          id="summaryText"
+          style="
+            font-size: 12px;
+            color: #4b5563;
+            margin-top: 4px;
+            text-align: left;
+          "
+        ></p>
+      </div>
+      <div id="clausesContainer"></div>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
